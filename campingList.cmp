@@ -1,0 +1,37 @@
+<aura:component controller="CampingListController">
+   
+    <aura:attribute name="items" type="Camping_Item__c[]"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+     <aura:handler name="updateItem" event="c:addItemEvent"
+   action="{!c.handleUpdateCamping}"/>
+    <aura:handler name="createItem" event="c:addItemEvent"
+                  action="{!c.handleAdditem}" />
+    
+
+	<div class="slds-col slds-col--padded slds-p-top--large">
+    	<div aria-labbeledby="campinglist">
+        <fieldset class="slds-box slds-theme--default slds-container--small">
+            <legend id="campinglist" class="slds-text-heading--small slds-p-vertical--medium">
+            Add item
+            </legend>
+            <!-- tutaj dodajemy forme -->
+           <c:campingListForm /> 
+            </fieldset>
+        </div>
+    </div>
+    <div class="slds-card slds-p-top--medium">
+    <header class="slds-card__header">
+        <h3 class="slds-text-heading--small">New Items</h3>
+        </header>
+        
+        <section class="slds-card__body">
+        <div id="list" class="row">
+            <aura:iteration items="{!v.items}" var="new"> <!-- items - nazwa frameworku,
+ {!v.newItem} - z czego pobiera dane, var - nazwa zmiennej wewnatrz elementu iteration,
+campingListItem dupa="{!dupa} - var i wskazanie na zmienna wewnatrz iteration -->
+                <c:campingListItem new="{!new}"/>
+            </aura:iteration>
+            </div>
+        </section>
+    </div>
+</aura:component>

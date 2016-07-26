@@ -1,0 +1,21 @@
+<aura:component >
+    
+    <aura:attribute name="new" type="Camping_Item__c"/> 
+    <aura:registerEvent name="updateItem" type="c:addItemEvent" />
+    <p>Name:
+        <ui:outputText value="{!v.new.Name}"/>
+    </p>
+    <p>
+    Quantity:
+        <ui:outputNumber value="{!v.new.Quantity__c}"/>
+    </p>
+    <p>
+    Price:
+        <ui:outputCurrency value="{!v.new.Price__c}" />
+    </p>
+    <p>
+    Packed?:
+        <ui:outputCheckbox value="{!v.new.Packed__c}" click="{!c.clickPacked}" />
+    </p>
+   	
+</aura:component>

@@ -1,0 +1,54 @@
+<aura:component >
+     <aura:attribute name="newCamp" type="Camping_Item__c" default="{ 'sobjectType': 'Camping_Item__c',
+                    'Name': '',
+                    'Quantity__c': 0,
+                    'Price__c': 0,
+                    'Packed__c': false
+                    }"/> 
+     <aura:registerEvent name="createItem" type="c:addItemEvent"/>
+	      <form class="slds-form--stacked">
+            <div class="slds-form-element slds-is-required">
+                <div class="slds-form-element__control">
+                <ui:inputText aura:id="campname" label="Name" 
+                              class="slds-input" 
+                              labelClass="slds-form-element__label" 
+                              value="{!v.newCamp.Name}"
+                              required="true" />
+                   
+                </div>
+                </div>
+                
+                <div class="slds-form-element slds-is-required">
+                	<div class="slds-form-element__control">
+                    	<ui:inputNumber aura:id="campquantity" label="Quantity"
+                                        class="slds-input"
+                                        labelClass="slds-form-element__label"
+                                        value="{!v.newCamp.Quantity__c}"
+                                        required="true" />
+                    </div>
+                </div>
+                
+                <div class="slds-form-element slds-is-required">
+                	<div class="slds-form-element__control">
+                    <ui:inputCurrency aura:id="campprice" label="Price"
+                                      class="slds-input"
+                                      labelClass="slds-form-element__label"
+                                      value="{!v.newCamp.Price__c}"
+                                      required="true" />
+                    </div>
+                </div>
+            	<div class="slds-form-element">
+                	<ui:inputCheckbox aura:id="camppacked" label="Packed?"
+                                      class="slds-checkbox"
+                                      labelClass="slds-form-element__label"
+                                      value="{!v.newCamp.Packed__c}" />
+                                                           
+                   
+                </div>
+                <div class="slds-form-element">
+                    <ui:button label="Input items"
+                               class="slds-button slds-button--brand"
+                               press="{!c.submitForm}" />
+                </div>
+            </form>
+</aura:component>
